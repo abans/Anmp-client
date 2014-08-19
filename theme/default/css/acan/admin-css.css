@@ -1,0 +1,126 @@
+.nav{position:relative;background:#d8e0fe;text-align:left;}
+.nav2{position:absolute;top:25px;left:0px;z-index:100;background:#c6e0f9;}
+.nav_hover{background:#f4d3a2;}
+
+/**header**/
+#header{margin:5px auto 5px;width:100%;border-bottom:double 2px #FF0033;}
+#logo{margin:0 auto;height:60px;text-align:center}
+.logo{color:#ff0080;background:url(../images/logo.png) no-repeat;width:120px;height:60px;margin:0 auto;padding:0;}
+
+#top{ width:980px;height:30px;text-align:center; margin:0;padding:0;}
+.topnav{height:30px; margin:0 auto;padding:0px;overflow:hidden;}
+.topnav a{ font-size:14px;float:left;color:#fff;font-weight:bold; padding-top:10px;margin:0px; width:100px; height:30px;background:url(/atpl/astyle/css/images/nav1.gif) no-repeat;text-decoration:none;}
+.topnav a:hover{ font-size:16px;padding-top:6px;}
+.topnav a:hover{color:#fff;background:url(/atpl/astyle/css/images/nav2.gif) no-repeat;}
+
+.amain{text-align:left;}
+
+/**footer**/
+#footer{float:left;width:100%;margin:5px auto 35px auto;font-size:12px;text-align:center;color:#008040;border-top:double 2px #FF0033;}
+
+
+/**left**/
+#left{width:190px;margin:0 auto;float:left;height:100%;text-align:left;}
+
+.cg_list{border-bottom:dashed 1px #FF0033;padding:5px;}
+
+/**main**/
+#main{width:800px;float:right;height:auto;text-align:left;overflow:hidden;}
+
+
+/*** pre_print ***/
+.pre_print{position:absolute;left:50px;top:50px;}
+
+/**album**/
+.album_nav{border-bottom:2px solid #aaa;}
+
+.a_list_albums{float:left;width:1000px;}
+.a_list_album{float:left;width:220px;height:200px;}
+
+.a_list_body{float:left;width:100%;}
+
+.a_list_album_img{width:200px;height:150px;}
+
+
+/**blog**/
+.blog_cg{padding:5px;color:#008040}
+
+
+.blog_main{height:auto;background:#fbfce4;border-top:solid 1px #c0c0c0;}
+.blog_title{height:30px;margin:0 auto;padding:5px;background:#f7e2fc;}
+.blog_title a{font-size:14px;font-weight:bold;}
+.blog_time{color:#808080}
+.blog_body{margin:0 auto;padding:5px;background:#fff;}
+.blog_other{margin:0 auto;}
+.blog_other p{padding:5px;}
+.blog_other a{padding:5px;}
+
+.blog_reply{border-top:1px solid #808080;margin-top:5px;width:100%;height:auto;}
+.reply_left{border-bottom:dashed 1px #c0c0c0;height:16px;padding:5px;}
+.reply_left p{float:left;}
+.reply_left2{}
+.blog_reply_main{height:auto;border-bottom:solid 1px #c0c0c0;}
+.blog_reply_main p{font-size:12px;color:#000;}
+.reoly_time p{color:#c0c0c0;}
+.reoly_title,.reoly_time,.reoly_body{padding-left:120px;}
+.replyfrom{margin:10px auto;height:auto;width:100%;}
+
+
+.list_m_id{width:50px;}
+.list_m_title{width:200px;overflow:hidden;}
+.m_list{float:left;}
+.m_m_a_list{width:100%;height:auto;border-top:1px dashed #c0c0c0;overflow:hidden;}
+.m_m_a_list_ip{width:100%;height:auto;border-bottom:1px dashed #c0c0c0;overflow:hidden;display:none;}
+.m_m_a_nav{float:left;border-top:1px solid #aaa;margin:2px auto;background:#b1dcf3;padding:2px;}
+.m_m_a_nav div{float:left;overflow:hidden;}
+.m_m_a_list div{float:left;overflow:hidden;}
+.m_a_login_name{width:100px;}
+.m_a_real_name{width:100px;}
+.m_a_admin{width:100px;}
+.m_a_regtime{width:160px;}
+.m_a_Manage{width:200px;}
+.member_main{width:800px;}
+.member_main div{width:auto;}
+.member_main p{float:left;width:100px;margin:0;}
+
+
+/*** aconfig ***/
+.acan_nav{float:left;text-align:left;padding:5px;background:#fde3f1;width:800px;}
+.acan_nav h2{background:#cadcf9;text-align:center;height:24px;line-height:24px;}
+.acan_nav_list{float:left;width:100%;overflow:hidden;background:#cbe8f8;}
+.acan_nav_ul{float:left;width:100%;}
+.acan_nav_ul_child{}
+.acan_nav_ul li{display:block;float:left;height:30px;line-height:30px;padding:0 15px;}
+.anav_chk{font-weight:bold;color:#d30543;}
+.anav_chk{background:#9fcee8;}
+
+
+/** stst **/
+.list_m_ip{width:120px;}
+.list_m_url{width:250px;}
+.list_m_agent{width:360px;overflow:hidden;}
+
+.stat_iplist_ajax{display:none;width:100%;height:auto;padding:0;background:#c7fafc;}
+.stat_iplist_nav{width:100%;height:20px;}
+.stat_iplist{width:100%;}
+.stat_iplist div{float:left;background:#d5fbf9;}
+.stat_iplist_nav div{float:left;}
+.stat_iplist_url{width:360px;}
+.stat_iplist_time{width:160px;}
+
+.cmd_run_show{width:800px;height:500px;float:left;}
+
+
+.Adev{width:100%;float:left;}
+.Adev ._dir{width:19%;float:left;margin-right:1%;}
+.Adev ._option{width:100%;float:left;}
+.Adev ._file{width:80%;float:left;}
+.Adev ._nav{width:100%;}
+.Adev ._nav ._path{width:50%;float:left;text-align:left;}
+.Adev ._nav ._pathr ._dir{width:50%;}
+.Adev ._nav ._pathr{width:50%;float:left;}
+.Adev ._history{float:left;width:100%;}
+.Adev ._history ._dirs{width:49%;float:left;}
+.Adev ._history ._files{width:49%;float:right;}
+#ajax_dev p input{padding:0 5px;}
+

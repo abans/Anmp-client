@@ -1,0 +1,15 @@
+
+
+/*
+.dis_bg{filter:alpha(opacity=60);}
+.dis_bg{filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);}
+*/
+
+.imcm .imea span{position:absolute;}
+.imcm .imclear,.imclear{display:none;}
+.imcm{zoom:1;}
+.imcm li{curosr:hand;}
+.imcm ul{zoom:1}.imcm a{zoom:1;}
+
+.cg_album_list img{width:expression(this.width>120?"width":width);height:expression(this.width>90?"90":height);overflow:hidden;}
+.album_show img{width:expression(this.width>92?"width":width);height:expression(this.width>69?"69":height);overflow:hidden;}

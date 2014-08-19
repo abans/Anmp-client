@@ -1,0 +1,33 @@
+
+/**header**/
+#header{float:left;margin:5px auto;width:100%;border-bottom:double 2px #FF0033;}
+
+.top { margin: 0 auto; width:100%; height:60px;}
+.logo {float:left;width:120px;height:60px;}
+.logo h2 {float:left;width:120px;height:60px;margin:0;background:url(/atpl/astyle/images/logo.png) no-repeat;}
+.time {width:auto;height:30px;float:left;}
+.top_nav { float:right;width:800px;height:60px;margin:0;padding:0;}
+
+/** login **/
+.user{width:100%;height:30px;}
+.top_msg{width:400px;float:left;}
+.login{width:400px;float:left;}
+
+
+/** nav **/
+
+.anav{position:fixed;top:20px;left:20px;z-index:20;}
+
+.amenu{text-align:center;background:#fcb8da;padding:0px;}
+.amenu_ul{height:100%;z-index:79;margin:0;padding:5px 0px;}
+.amenu_li{position:relative;list-style:none;width:100px;line-height:35px;background:#ef349b;margin:0 5px;}
+.amenu_li a{display:block;color:#eee;font-weight:bold;height:30px;padding:0 8px;text-align:left;}
+.amenu_li_hover,.amenu_li a:hover{line-height:30px;display:block;color:#eee;font-size:14px;font-weight:bold;background:#b10c5f;}
+
+.amenu2{position:absolute;top:-5px;left:100px;margin:0 auto;z-index:80;background:#fcb8da;}
+.amenu2 ul{float:left;padding:5px;}
+.amenu2 ul li{height:30px;list-style:none;margin:0;line-height:30px;background:#ef349b;color:#008040;}
+.amenu2 ul li a{color:#000;font-size:12px;white-space:nowrap;}
+.amenu2 ul li a:hover{color:#fff;font-size:12px;font-weight:bold;background:#b10c5f;}
+
+

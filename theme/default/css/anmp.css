@@ -1,0 +1,54 @@
+/*
+	www.abans.cn	Powered by Acan
+	abans@qq.com
+	admin
+*/
+@import url("acan/public.css");
+@import url("acan/header_admin.css");
+@import url("acan/admin-css.css");
+@import url("app/file.css");
+@import url("app/mysql.css");
+
+body{background:#000;}
+.-body{width:642px;height:560px;margin:0 auto;float:none;background:#d8edef;}
+._hostinfo{width:100%;position:relative;background:#ffd0ff;}
+._hostinfo ._logout{position:absolute;top:0px;right:0px;}
+._content form{overflow:auto;height:100%;}
+.status span{color:#800000;}
+.setting ._t{width:30%;text-align:right;}
+.control{width:640px;border:1px solid blue;background:#e6dbf2;}
+.control dt{font-weight:bold;background:#c2ecef;color:#800040;}
+.control span{background:red;width:60px;text-align:center;border-radius:10px;display:block;float:left;}
+.control ._nav{width:60px;}
+.control b{width:80px;text-align:center;border-radius:10px;display:block;float:left;}
+.status{float:left;width:100%;}
+._login_log{width:99%;height:150px;border:1px solid #7F9DB9;background:#c0c0c0;overflow:auto;text-align:left;}
+._info{width:100%;height:250px;position:relative;}
+.log{float:left;width:440px; height:200px; border:1px solid #7F9DB9;background:#c0c0c0;overflow:auto;position:absolute;top:0;left:0;}
+.link{text-align:center;float:left;width:440px;position:absolute;top:205px;left:0;}
+.copyright{text-align:center;float:left;width:440px;position:absolute;top:250px;bottom:0;left:0;}
+.link b,.link p{text-align:center;float:left;width:100px;}
+.system{float:left;width:200px;position:absolute;top:0;right:0;}
+.system span,.system div{float:left;}
+.system select{width:100px;}
+.system ._img,.system ._cpu{float:left;width:100px;height:16px;background:#0A0A0A;position:relative;z-index:3;margin:2px 0;}
+.system ._avail,.system ._cpua{left:0;background:#41af46;height:100%;position:absolute;z-index:4;}
+.system ._img span,.system ._cpu span{position:absolute;left:0;text-align:center;z-index:5;display:block;width:100%;font-weight:bold;line-height:16px;color:#f4d5eb;}
+.system ._text{float:left;}
+.login{width:100%;box-sizing:border-box;margin:5px 0;}
+.login dt,.login dd{line-height:26px;height:30px;}
+.login dt{width:30%;text-align:right;}
+.login dd{width:69%;}
+.system dl{width:200px;}
+.system dt{width:45%;height:20px;}
+.system dd{width:54%;height:20px;}
+.host_menu{height:30px;position:relative;}
+.vip_btn{float:left;width:100px;padding:3px;background:#c6dfae;border:1px solid #aaa;}
+.host_menu ul{position: absolute;top:30px;z-index:301;left:0;width:100px;background:#c6dfae;border:1px solid #aaa;}
+.host_menu ul li{padding:3px 0;text-align:center;border-bottom:1px dashed #aaa;list-style:none;}
+.host_menu ul li:hover,.vip_btn:hover{background:#95bbad;}
+.host_conf input{padding:3px;}
+.host_conf .child{width:100%;float:left;}
+.host_conf .child input,.host_conf .child .host_menu{float:left;}
+#host_view{text-align:left;}
+#msg{width:330px;}

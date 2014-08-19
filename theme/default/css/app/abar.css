@@ -1,0 +1,14 @@
+
+.abar_body{width:300px;position:fixed;z-index:30;right:10px;bottom:0px;height:30px;background:#aaaaaa;}
+.abar_nav{width:300px;height:30px;position:absolute;bottom:0px;right:0px;background:#e1f4f3;}
+
+.abar_nav_ul{float:left;margin:0;list-style:none;line-height:30px;}
+.abar_nav_li{float:left;margin:0;padding:0 8px;}
+.abar_nav_li a{float:left;display:block;}
+.abar_nav_li:hover{background:#92bae2;}
+
+
+
+
+
+

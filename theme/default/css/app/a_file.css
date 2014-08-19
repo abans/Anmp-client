@@ -1,0 +1,50 @@
+
+.a_file{width:100%;line-height:20px;float:left;height:500px;text-align:left;overflow:auto;}
+.a_file_dir{width:25%;float:left;}
+.a_file_file{width:75%;float:left;}
+
+p{margin:0;padding:0;}
+a{text-decoration:none;}
+#left{width:100%;background:#d3dce3;}
+#right{width:100%;}
+
+
+
+/******* 左边 *******/
+.dbs{width:100%;float:left;overflow:hidden;}
+.dbname{width:100%;float:left;}
+.dbname:hover{background:#af6bc2;}
+.dbno{width:10%;float:left;text-align:center;}
+
+/******* 右边 *******/
+.filenav{width:100%;height:24px;}
+.file{float:left;width:100%;margin:0;overflow:hidden;}
+.files{width:100%;margin:0;overflow:hidden;}
+.file div{float:left;margin:0;padding:0;border:1px solid #FFFFFF;background:#e5e5e5;}
+.file1{width:5%;background:#ABAFE9;padding:2px;margin:2px;text-align:center;}
+.file2{width:25%;overflow:hidden;}
+.file3{width:8%;}
+.file4{width:8%;}
+.file5{width:8%;}
+.file6{width:18%;}
+.file7{width:25%;}
+.file_nav{text-align:center;background:#d5d5d5!important;padding:5px 0!important;}
+.file_ll{text-align:left;}
+.file_lr{text-align:right;}
+
+
+
+.dirnav{width:100%;height:24px;}
+.dir{float:left;width:100%;margin:0;overflow:hidden;}
+.dirs{width:100%;margin:0;overflow:hidden;}
+.dir div{float:left;margin:0;padding:0;border:1px solid #FFFFFF;background:#d1f1e4;}
+.dir1{width:5%;background:#ABAFE9;padding:2px;margin:2px;text-align:center;}
+.dir2{width:25%;overflow:hidden;}
+.dir3{width:8%;}
+.dir4{width:8%;}
+.dir5{width:8%;}
+.dir6{width:18%;}
+.dir7{width:25%;}
+.dir_nav{text-align:center;background:#d5d5d5!important;padding:5px 0!important;}
+.dir_ll{text-align:left;}
+.dir_lr{text-align:right;}
