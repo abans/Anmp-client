@@ -7,17 +7,20 @@ var logindata = {
 	"username":{"type":"text","title":"用户名","value":"root"},
 	"password":{"type":"password","title":"密码","value":"root"}
 };
+var Apname={nginx:'nginx.exe',php:'php-cgi.exe',memcache:'memcached.exe',mysql:'mysqld.exe',redis:'redis-server.exe',mongodb:'mongod.exe'};
+var Asname={'nginx.exe':'nginx','php-cgi.exe':'php','memcached.exe':'memcache','mysqld.exe':'mysql','redis-server.exe':'redis','mongod.exe':'mongodb'};
 var port;
 var Adata = new Object();
 Adata.username = "";
 Adata.hash = "";//通信验证码
 var messages = [];// Array(N);
 var readyState=["连接尚未建立","连接正常","连接正在关闭","连接已经关闭"];
-var conrr = {"nav":"程序","nginx":"nginx","php":"php","mysql":"mysql","memcache":"memcache","mongodb":"mongodb","all":"所有"};
+var conrr = {"nav":"程序","nginx":"nginx","php":"php","mysql":"mysql","memcache":"memcache","redis":"redis","mongodb":"mongodb","all":"所有"};
 var conbtn = {
 	"nginx":{"start":"启动","stop":"停止","restart":"重启","reload":"平滑重载","test":"测试配置"},
 	"php":{"start":"启动","stop":"停止","restart":"重启"},
 	"memcache":{"start":"启动","stop":"停止","restart":"重启"},
+	"redis":{"start":"启动","stop":"停止","restart":"重启"},
 	"mysql":{"start":"启动","stop":"停止","restart":"重启","install":"安装","remove":"卸载"},
 	"mongodb":{"start":"启动","stop":"停止","restart":"重启","install":"安装","remove":"卸载"},
 	"all":{"start":"一键启动","stop":"一键停止","restart":"一键重启"}
@@ -43,16 +46,21 @@ var Asetopt = {
 			"auto_del_log":{name:"自动删除日志",type:"number",remark:"周期前"}
 		},"mysql":{
 			"ini":		{name:"配置文件",type:"text"},
-		"version":	{name:"版本",type:"select",opt:version.mysql}
+			"version":	{name:"版本",type:"select",opt:version.mysql}
 		},"memcache":{
 			"p":{name:"端口",type:"number"},
 			"m":{name:"大小",type:"number"},
 			"c":{name:"并发",type:"number"}
+		},"redis":{
+			"conf":{name:"配置文件",type:"text"},
+			"bit":{name:"系统构架",type:"radio",opt:{"32":"32","64":"64"},remark:"位"}
 		},"autostart":{
 			"nginx":	{name:"nginx",type:"radio",opt:{"4":"是","1":"否"}},
 			"php":		{name:"php",type:"radio",opt:{"4":"是","1":"否"}},
 			"mysql":	{name:"mysql",type:"radio",opt:{"4":"是","1":"否"}},
-			"memcache":	{name:"memcache",type:"radio",opt:{"4":"是","1":"否"}}
+			"memcache":	{name:"memcache",type:"radio",opt:{"4":"是","1":"否"}},
+			"redis":	{name:"redis",type:"radio",opt:{"4":"是","1":"否"}},
+			"mongodb":	{name:"mongodb",type:"radio",opt:{"4":"是","1":"否"}}
 		}
 	},
 /*	"user":{
@@ -115,7 +123,7 @@ var Asetopt = {
 		'autoindex':	{title:"目录索引",type:"radio",value:"off",opt:Aopt_OnOff},
 		'ssi':			{title:"开启ssi",type:"radio",value:"off",opt:Aopt_OnOff},
 		'other':		{title:"其它",type:"textarea",style:"width:100%;height:100px;"},
-		'pool':			{title:"进程池",type:"select","remark":"需要php支持请选择"},
+		'pool':			{title:"PHP进程池",type:"select","remark":"需要php支持请选择"},
 	},
 	"hostex":{
 		'path':{title:'目录',type:'text'},
@@ -171,6 +179,9 @@ function socket(){
 		});
 		Asocket.on('sysinfo', function (obj) {
 			Anmp.sysinfo(obj);
+		});
+		Asocket.on('wmic', function (obj) {
+			Anmp.wmic(obj);
 		});
 		Asocket.on('status', function (obj) {
 			Anmp.set_status(obj);
@@ -525,7 +536,7 @@ Anmp.config.html = function(name,obj){
 			html += Ahtml.tag("table",{"class":"-table setting setid_"+x},tmp);
 		};
 		if(name=='Anmp'){
-			tmp = Ahtml.tag("tr",{},Ahtml.tag("th",{'colspan':2},"[进程池]设置"+
+			tmp = Ahtml.tag("tr",{},Ahtml.tag("th",{'colspan':2},"[PHP进程池]设置"+
 				Ahtml.tag('input',{'type':'button',onclick:"Anmp.config.pooladd()",value:'添加'})
 			));
 			for (var y in obj.pool) {
@@ -543,15 +554,16 @@ Anmp.config.html2 = function(x,opt,obj){
 	for (var y in opt) {
 		var remark = opt[y].remark;if(typeof(remark)=="undefined"){remark="";}
 		var inputs = "";
+		var val=(obj[x] && obj[x][y]?obj[x][y]:'');
 		switch (opt[y].type){
 			case "select":
-				inputs = Ahtml.select({"rel":x+"-"+y,"name":x+"-"+y},opt[y].opt,obj[x][y])+remark;
+				inputs = Ahtml.select({"rel":x+"-"+y,"name":x+"-"+y},opt[y].opt,val)+remark;
 				break;
 			case "radio":
-				inputs = Ahtml.radio({"rel":x+"-"+y,"name":x+"-"+y},opt[y].opt,obj[x][y])+remark;
+				inputs = Ahtml.radio({"rel":x+"-"+y,"name":x+"-"+y},opt[y].opt,val)+remark;
 				break;
 			default:
-				inputs = Ahtml.tag("input",{type:opt[y].type,"rel":x+"-"+y,"name":x+"-"+y,value:obj[x][y]})+remark;
+				inputs = Ahtml.tag("input",{type:opt[y].type,"rel":x+"-"+y,"name":x+"-"+y,value:val})+remark;
 				break;
 		}
 		html += Ahtml.tag("tr",{},Ahtml.tag("td",{'class':'_t'},opt[y].name+":")+Ahtml.tag("td",{},inputs));
@@ -660,7 +672,7 @@ Anmp.ready = function(){
 			+'<dt>检测状态</dt><dd id="status_check"/></dd>'
 			+'</dl></div>'
 			+'<div id="link" class="link"></div>'
-			+'<div class="copyright">Copyright ©2012 abans@qq.com  QQ群:49642170</div>'
+			+'<div class="copyright">Copyright ©2012-2014 abans@qq.com  QQ群:238965259</div>'
 			+'</div>'
 	jQuery(".-body").html(html);
 	//--设置
@@ -789,6 +801,21 @@ Anmp.check_status = function(act){
 	this.send(Adata);
 }
 var Cold = {};
+Anmp.wmic=function(obj){
+	for(var n in Apname){
+		var memw=0,memp=0;
+		if(obj[Apname[n]]){
+			for(var i in obj[Apname[n]]){
+				with( obj[Apname[n]][i] ){
+					memw += parseInt(WorkingSetSize);
+					memp += parseInt(PageFileUsage);
+				}
+			}
+		}
+		jQuery("._memw_"+n).text(Math.round(memw/1024/102.4)/10+'MB');
+		jQuery("._memp_"+n).text(Math.round(memp/102.4)/10+'MB');
+	}
+}
 Anmp.sysinfo = function(obj){
 	if(obj.info){
 		var info = obj.info;
@@ -819,17 +846,6 @@ Anmp.sysinfo = function(obj){
 		jQuery(".system ._memfree").text(Math.round(arr.free/(1024*1024))+"MB");
 		jQuery(".system ._avail").css("width",percent+"%");
 		jQuery(".system ._img span").text(percent+"%");
-	}
-	if(obj.plist){
-		var memw = 0;
-		for(var i in obj.plist['nginx.exe']){memw += obj.plist['nginx.exe'][i].mem;}
-		jQuery("._memw_nginx").text(Math.round(memw/1024)+'MB');memw = 0;
-		for(var i in obj.plist['php-cgi.exe']){memw += obj.plist['php-cgi.exe'][i].mem;}
-		jQuery("._memw_php").text(Math.round(memw/1024)+'MB');memw = 0;
-		for(var i in obj.plist['memcached.exe']){memw += obj.plist['memcached.exe'][i].mem;}
-		jQuery("._memw_memcache").text(Math.round(memw/1024)+'MB');memw = 0;
-		for(var i in obj.plist['mysqld.exe']){memw += obj.plist['mysqld.exe'][i].mem;}
-		jQuery("._memw_mysql").text(Math.round(memw/1024)+'MB');
 	}
 	if(obj.netstat){
 		net = obj.netstat
@@ -889,7 +905,7 @@ Anmp.set_memory = function(act,arr){
 }
 Anmp.setting = function(act){
 	if(act=='help'){
-		Acan.url.open('http://bbs.nice9s.com/forum-39-1.html','Anmp_v4');
+		Acan.url.open('http://my.nice9s.com/f-39-1','Anmp_v4');
 		return;
 	}
 	Anmp.config.view(act);return;
